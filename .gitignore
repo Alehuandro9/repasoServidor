@@ -12,6 +12,3 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-
-database/migrations/2020_12_15_083223_create_especialidades_table.php
-app/Models/Modulo.php

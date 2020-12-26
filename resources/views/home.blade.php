@@ -12,7 +12,7 @@
                     {{ __('1er. Trimestre. Curso 2020/21') }}
                 </div>
                 <div class="card-footer">
-                    <a href="" class="button medium scrolly">M&oacute;dulos</a>
+                    <a href="{{ url('modulos') }}" class="button medium scrolly">M&oacute;dulos</a>
                 </div>
             </div>
         </div>

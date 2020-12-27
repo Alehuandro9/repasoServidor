@@ -20,4 +20,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/modulos', 'App\Http\Controllers\ModulosController@index');
 
+Route::put('/modulos', 'App\Http\Controllers\ModulosController@cambiarDatos');
+
 Route::get('/modulos/edit/{id}', 'App\Http\Controllers\ModulosController@edit');

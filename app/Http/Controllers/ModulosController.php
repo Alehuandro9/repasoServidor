@@ -14,6 +14,17 @@ class ModulosController extends Controller
 
     public function edit($id)
     {
-        return view('edit');
+        return view('edit', array('modulo' => Modulo::findOrFail($id)));
+    }
+
+
+    public function cambiarDatos(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        //$modulo = Modulo::findOrFail($id);
+        //$idModulo = $modulo->id;
+        /*
+        $modulo->update($request->all());*/
+        return "Valor: " . $nombre;
     }
 }

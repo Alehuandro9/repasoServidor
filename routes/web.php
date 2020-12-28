@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/modulos', 'App\Http\Controllers\ModulosController@index');
 
 Route::put('/modulos', 'App\Http\Controllers\ModulosController@cambiarDatos');
 
-Route::get('/modulos/edit/{id}', 'App\Http\Controllers\ModulosController@edit');
+Route::get('/modulos/edit/{id}', 'App\Http\Controllers\ModulosController@edit')->middleware('auth');

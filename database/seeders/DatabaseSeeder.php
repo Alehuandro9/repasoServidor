@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Ciclo;
 use App\Models\Especialidad;
 use App\Models\Modulo;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
         self::seedEspecialidades();
         self::seedCiclos();
         self::seedModulos();
-        $this->command->info('Tablas Especialidades, Ciclos, Modulos inicializadas con datos!');
+        self::seedUsuarios();
+        $this->command->info('Tablas Especialidades, Ciclos, Modulos, Usuarios inicializadas con datos!');
     }
 
     private static function seedEspecialidades()
@@ -61,7 +63,23 @@ class DatabaseSeeder extends Seeder
 		}
     }
 
+    private static function seedUsuarios()
+    {
+    	User::truncate();
+    	foreach( self::$arrayUsuarios as $usuario ) {
+            $c = new User();
+            $c->name = $usuario['name'];
+            $c->email = $usuario['email'];
+            $c->password = bcrypt($usuario['password']);
+		    $c->save();
+		}
+    }
+
     private static $arrayEspecialidades = ['Informática', 'Sistemas y Aplicaciones Informáticas'];
+
+    private static $arrayUsuarios = [
+        array("name" =>'borja', "email" =>'6379454@alu.murciaeduca.es', "password" =>"6379454")
+    ];
 
     private static $arrayCiclos = [
         array("grado" =>'FPB', "nombre" =>"Informática de Oficina"),

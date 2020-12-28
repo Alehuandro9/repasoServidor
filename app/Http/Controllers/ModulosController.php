@@ -20,11 +20,12 @@ class ModulosController extends Controller
 
     public function cambiarDatos(Request $request)
     {
-        $nombre = $request->input('nombre');
-        //$modulo = Modulo::findOrFail($id);
-        //$idModulo = $modulo->id;
-        /*
-        $modulo->update($request->all());*/
-        return "Valor: " . $nombre;
+        $id = $request->input('id');
+        $modulo = Modulo::findOrFail($id);
+        $modulo->nombre = $request->input('nombre');
+        $modulo->especialidad_id = $request->input('especialidad_id');
+        $modulo->ciclo_id = $request->input('ciclo_id');
+        $modulo->save();
+        return view('modulos');
     }
 }

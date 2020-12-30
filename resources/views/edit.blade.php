@@ -13,16 +13,16 @@
                     {{ method_field('PUT') }}
                         <div class="row gtr-uniform">
                             <div class="col-3 col-12-xsmall">
-                                <input type="number" name="id" id="id" value="id" placeholder="{{$modulo->id}}">
+                                <input type="number" name="id" id="id" value="{{$modulo->id}}" placeholder="">
                             </div>
                             <div class="col-12 col-12-xsmall">
-                                <input type="text" name="nombre" id="nombre" value="" placeholder="{{$modulo->nombre}}">
+                                <input type="text" name="nombre" id="nombre" value="{{$modulo->nombre}}" placeholder="">
                             </div>
                             <div class="col-3 col-12-xsmall">
-                                <input type="number" name="especialidad" id="especialidad" value="" placeholder="{{$modulo->especialidad_id}}" min="1" max="2">
+                                <input type="number" name="especialidad" id="especialidad" value="{{$modulo->especialidad_id}}" placeholder="" min="1" max="2">
                             </div>
                             <div class="col-3 col-12-xsmall">
-                                <input type="number" name="ciclo" id="ciclo" value="" placeholder="{{$modulo->ciclo_id}}" min="1" max="6">
+                                <input type="number" name="ciclo" id="ciclo" value="{{$modulo->ciclo_id}}" placeholder="" min="1" max="6">
                             </div>
                             <div class="col-12">
                                 <ul class="actions">

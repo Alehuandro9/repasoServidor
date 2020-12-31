@@ -16,7 +16,7 @@ Al intentar cambiar o actualizar datos en la base de datos se enviaran a traves 
             <input type="text" name="nombre" id="nombre" value="{{$modulo->nombre}}" placeholder="">
         </div>
         <div class="col-3 col-12-xsmall">
-            <input type="number" name="especialidad" id="especialidad" value="{{$modulo->especialidad_id}}" placeholder="" min="1" max="2">
+            <input type="number" name="especialidad" value="{{$modulo->especialidad_id}}" placeholder="" min="1" max="2">
         </div>
         <div class="col-3 col-12-xsmall">
             <input type="number" name="ciclo" id="ciclo" value="{{$modulo->ciclo_id}}" placeholder="" min="1" max="6">

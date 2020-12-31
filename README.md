@@ -1,29 +1,47 @@
-<p align="center"><img src="http://llegarasalto.com/guiafp/images/IFC.jpg" width="200"></p>
+# Acerca de este repositorio
 
+## Este readme va a tratar sobre cosas que son olvidadizas o que no tengo muy claras porque funcionan.
 
-## Acerca de Colabora-Alarma
+Al intentar cambiar o actualizar datos en la base de datos se enviaran a traves de un formulario parecido al siguiente ejemplo:
 
-Colabora-Alarma es la aplicación que permite a los docentes de la **Familia Profesional de Informática y Comunicaciones** de la Región de Murcia, colaborar en la elaboración y organización de materiales didácticos mientras dura el estado de alarma decretado por el Gobierno Español. _(y después, también)_
+```
+<form action="{{ url('modulos') }}" method="post">
+                    @csrf
+                    {{ method_field('PUT') }}
+                        <div class="row gtr-uniform">
+                            <div class="col-3 col-12-xsmall">
+                                <input type="number" name="id" value="{{$modulo->id}}" placeholder="">
+                            </div>
+                            <div class="col-12 col-12-xsmall">
+                                <input type="text" name="nombre" id="nombre" value="{{$modulo->nombre}}" placeholder="">
+                            </div>
+                            <div class="col-3 col-12-xsmall">
+                                <input type="number" name="especialidad" id="especialidad" value="{{$modulo->especialidad_id}}" placeholder="" min="1" max="2">
+                            </div>
+                            <div class="col-3 col-12-xsmall">
+                                <input type="number" name="ciclo" id="ciclo" value="{{$modulo->ciclo_id}}" placeholder="" min="1" max="6">
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Enviar" class="primary"></li>
+                                    <li><input type="reset" value="Cancelar"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+```
 
-## ¿Cómo Colaborar?
+En el formulario anterior puedes observar que algunos input no tienen el atributo id, eso es porque laravel a la hora de actualizar o introducir datos en la base de datos coge los valores de los input a través del atributo name, por eso en el siguiente fragmento de código de un metodo, en el apartado "$request->input('nombre');" el valor entre comillas simples es el valor del atributo name del formulario, no es el nombre del campo que corresponda en la base de datos.
 
-La colaboración se realizará en varias fases:
-
-La **primera fase** consistirá en el registro de todos aquellos que quieran colaborar. Este registro se realizará en el [despliegue de esta aplicación](https://colabora-alarma.herokuapp.com/). realizado en Heroku.
-Se ruega que los docentes se registren con su cuenta de Murciaeduca, aunque, se procurará que el registro se realice a través de Google, restringido a este dominio. _Aunque esta funcionalidad se puede retrasar_.
-Una vez registrados, los docentes podrán seleccionar, por orden de preferencia, los módulos en los que estarían más interesados en colaborar.
-En la **segunda fase** se agruparía a los docentes por módulos y se nombraría a un gestor de cada uno de los módulos, el cual sería el encargado de:
-- crear un curso en el aula virtual para la recogida de los recursos didácticos.
-- matricular al resto de los docentes interesados como docentes con derechos de edición.
-- dinamizar el grupo para que exista continuidad en el desarrollo y actualización de materiales. 
-
-## ¿Y en un futuro?
-
-Se podrían institucionalizar **seminarios** o **grupos de trabajo** **intercentros** para la **certificación** de las horas utilizadas en el desarrollo de esta labor.
-## Contribución
-
-Se agradece cualquier contribución que se realice a la idea, al cógigo de la aplicación o, de manera más inmediata **a la forma de agrupamiento de los docentes**, ya que el algoritmo de distribución no está implementado aún.
-
-## Licencia
-
-Esta aplicación está licenciada con la [MIT license](https://opensource.org/licenses/MIT).
+```
+public function cambiarDatos(Request $request)
+    {
+        $id = $request->input('id');
+        $modulo = Modulo::findOrFail($id);
+        $modulo->nombre = $request->input('nombre');
+        $modulo->especialidad_id = $request->input('especialidad');
+        $modulo->ciclo_id = $request->input('ciclo');
+        $modulo->save();
+        return redirect('modulos');
+    }
+```

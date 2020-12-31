@@ -31,7 +31,7 @@ Al intentar cambiar o actualizar datos en la base de datos se enviaran a traves 
 </form>
 ```
 
-En el formulario anterior puedes observar que algunos input no tienen el atributo id, eso es porque laravel a la hora de actualizar o introducir datos en la base de datos coge los valores de los input a través del atributo name, por eso en el siguiente fragmento de código de un metodo, en el apartado "$request->input('nombre');" el valor entre comillas simples es el valor del atributo name del formulario, no es el nombre del campo que corresponda en la base de datos.
+<p style="text-align: justify;">En el formulario anterior puedes observar que algunos input no tienen el atributo id, eso es porque laravel a la hora de actualizar o introducir datos en la base de datos coge los valores de los input a través del atributo name, por eso en el siguiente fragmento de código de un metodo, en el apartado "$request->input('nombre');" el valor entre comillas simples es el valor del atributo name del formulario, no es el nombre del campo que corresponda en la base de datos.</p>
 
 ```
 public function cambiarDatos(Request $request)

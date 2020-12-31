@@ -35,13 +35,13 @@ En el formulario anterior puedes observar que algunos input no tienen el atribut
 
 ```
 public function cambiarDatos(Request $request)
-    {
-        $id = $request->input('id');
-        $modulo = Modulo::findOrFail($id);
-        $modulo->nombre = $request->input('nombre');
-        $modulo->especialidad_id = $request->input('especialidad');
-        $modulo->ciclo_id = $request->input('ciclo');
-        $modulo->save();
-        return redirect('modulos');
-    }
+{
+    $id = $request->input('id');
+    $modulo = Modulo::findOrFail($id);
+    $modulo->nombre = $request->input('nombre');
+    $modulo->especialidad_id = $request->input('especialidad');
+    $modulo->ciclo_id = $request->input('ciclo');
+    $modulo->save();
+    return redirect('modulos');
+}
 ```
